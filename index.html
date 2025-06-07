@@ -1,32 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>PicPal</title>
- <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YSRajput Studio</title>
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --bg: #f5f5f5;
+      --text: #333;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px; /* footer ke liye space */
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.3rem;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.7;
+    }
+
+    .projects {
+      padding-top: 20px;
+    }
+
+    .project-block {
+      background: #f9f9f9;
+      margin: 15px auto;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.3s ease;
+      max-width: 800px;
+    }
+    .project-block:hover {
+      background-color: #e9e7ff;
+    }
+    .project-block h3 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    .project-block ol {
+      margin: 10px 0 0 20px;
+      padding-left: 0;
+      color: #555;
+      font-size: 1rem;
+    }
+    .project-block ol li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.7rem;
+      }
+      section {
+        margin: 20px 15px;
+        padding: 20px 20px 30px;
+      }
+    }
+  </style>
 </head>
 <body>
- <header>
- <nav>
- <ul>
- <li><a href="#">Home</a></li>
- <li><a href="#">Explore</a></li>
- <li><a href="#">Profile</a></li>
- </ul>
- </nav>
- </header>
- <main>
- <section class="upload-section">
- <h2>Upload Photo/Video</h2>
- <input type="file" id="upload-input">
- <button id="upload-button">Upload</button>
- </section>
- <section class="feed-section">
- <h2>Feed</h2>
- <div id="feed-container"></div>
- </section>
- </main>
- <script src="script.js"></script>
+
+<header>
+  <h1>YSRajput Studio</h1>
+  <p>Turning Ideas into Digital Reality</p>
+</header>
+
+<section id="welcome">
+  <h2>Welcome to YSRajput Studio</h2>
+  <p>
+    Every journey begins with a small thought. YSRajput Studio is also one such small beginning, in which we create new and modern digital solutions by thinking from our heart. We believe that technology is not just a tool, but a medium to convey your emotions and feelings to the world. Here we create simple apps and games that not only make your day better, but also understand your emotions.
+  </p>
+  <p>
+    In this journey, we have created every project with all our hard work, dedication, and by using AI. We want our apps to be not just a software for you, but an experience that can bring some peace and happiness to your everyday life.
+  </p>
+  <p>
+    In today's digital age, when there is competition everywhere, we want to create our own unique identity - a studio that brings new ideas to life, without any complex coding, just with creativity and heart. You can be a part of new experiences by joining this journey with us.
+  </p>
+  <p>
+    Let's find new paths together, dream new dreams, and give a new identity to our digital world. YSRajput Studio welcomes you on this journey.
+  </p>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>
+    YSRajput Studio is a small start-up with a mission to create modern and emotional mobile apps and games without any complex coding - with AI, creativity and dedication. We believe that every idea can become a digital reality if it is thought about from the heart.
+  </p>
+</section>
+
+<section id="projects" class="projects">
+  <h2>📂 Our Projects</h2>
+
+  <div class="project-block">
+    <h3>📱 Celibacy App</h3>
+    <ol>
+      <li>is in the planning stage.</li>
+      <li>The script has been written.</li>
+      <li>Celibacy awareness and support app is being developed.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>🚀 Game Turbo</h3>
+    <ol>
+      <li>The idea is ready, it is in the planning phase.</li>
+      <li>Script written for performance boost.</li>
+      <li>The game will be an optimization and tool-based app.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>🎮 Pixel Clash</h3>
+    <ol>
+      <li>Game planning is complete.</li>
+      <li>Work is going on in the scripting phase.</li>
+      <li>There will be a 2nd pixel-based action game.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>🛸 Galaxy Attack - Space Shooter</h3>
+    <ol>
+      <li>Work on designing is underway.</li>
+      <li>The player, enemies, and background elements are getting ready.</li>
+      <li>A classic space shooting experience in the making.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>💬 Just One Answer</h3>
+    <ol>
+      <li>It is in testing phase.</li>
+      <li>The theme design is being improved.</li>
+      <li>Chat-style yes/no answer app.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>❤️ Dil Ki Baat</h3>
+    <ol>
+      <li>The app is in building stage.</li>
+      <li>Work is underway to solve some bugs.</li>
+      <li>Emotion-based anonymous social media app.</li>
+    </ol>
+  </div>
+
+  <div class="project-block">
+    <h3>📝 Mood Diary</h3>
+    <ol>
+      <li>Simple notepad-style app.</li>
+      <li>User can write mood daily.</li>
+      <li>Basic working version is ready.</li>
+    </ol>
+  </div>
+
+</section>
+
+<footer>
+  &copy; 2025 YSRajput Studio |  Turning Ideas into Reality
+</footer>
+
 </body>
 </html>
