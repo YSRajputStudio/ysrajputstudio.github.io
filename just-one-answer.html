@@ -28,99 +28,712 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Just One Answer">
-  <title>Just One Answer App – YSRajput Studio</title>
+  
+  <title>Just One Answer - Instant Yes/No Decision App | YSRajput Studio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    :root {
+      --primary: #6c63ff;
+      --primary-dark: #5a52d5;
+      --secondary: #ff6584;
+      --accent: #36d1dc;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text: #2d3748;
+      --text-light: #718096;
+      --shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
+      --border-radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
       margin: 0;
-      padding: 20px;
-      background: #f5f5f5;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1 {
-      color: #6c63ff;
+
+    html {
+      scroll-behavior: smooth;
     }
-    .download-btn {
-      background: #6c63ff;
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header with gradient animation */
+    header {
+      background: linear-gradient(-45deg, #6c63ff, #5a52d5, #ff6584, #36d1dc);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
       color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
-h3 {
-      margin-top: 20px;
-      color: #0077ff;
-    }
-
-    p, li {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    ul {
-      margin-left: 20px;
-    }
-footer {
-      background: var(--primary);
-      color: black;
+      padding: 100px 0 80px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+      background-size: 50px 50px;
+      opacity: 0.3;
+      animation: movePattern 20s linear infinite;
+    }
+
+    @keyframes movePattern {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .logo-section {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 30px;
+    }
+
+    .app-icon {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 25px;
+      background: white;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      max-width: 750px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      font-weight: 300;
+    }
+
+    .accuracy-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .download-buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.05rem;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: var(--text);
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      padding: 45px 35px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(108, 99, 255, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Chat Demo Section */
+    .chat-demo-section {
+      background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    }
+
+    .chat-demo {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .chat-body {
+      padding: 30px 25px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      max-width: 75%;
       padding: 15px 20px;
-      font-size: 0.9rem;
-     
-      width: 100%;
-      bottom: 10;
-      left: 0;
-      box-shadow: 2 1px 8px rgba(0,0,0,0.0);
+      border-radius: 18px;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .user-message {
+      background: var(--primary);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+    }
+
+    .bot-message {
+      background: #f1f3f5;
+      color: var(--text);
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 50px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-content p {
+      font-size: 1.15rem;
+      margin-bottom: 25px;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    .about-content strong {
+      color: var(--primary);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 15px;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Privacy Section */
+    .privacy-list {
+      list-style: none;
+      max-width: 700px;
+      margin: 30px auto;
+    }
+
+    .privacy-list li {
+      background: white;
+      padding: 20px 25px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.05rem;
+    }
+
+    .privacy-list li i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, #2d3748, #4a5568);
+      color: white;
+      padding: 50px 0 25px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-logo h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .footer-logo p {
+      color: #cbd5e0;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-links h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #cbd5e0;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a0aec0;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      section h2 {
+        font-size: 2.2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-content {
+        padding: 35px 25px;
+      }
+
+      .download-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 70px 0 50px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .app-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .feature-card {
+        padding: 35px 25px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>💬 Just One Answer</h1>
-  <p>
-Just One Answer is a simple and smart app that answers your life's questions in just one word — "Yes" or "No". Chat-style interface, modern theme, and AI-powered logic make this app unique.
-  </p>
-  <ul>
-    <li>Working on new update</li>
-    <li>Theme redesign ongoing</li>
-    <li>Minimal chat interface</li>
-  </ul>
 
+<header>
+  <div class="container">
+    <div class="logo-section">
+      <div class="app-icon">
+        <span style="font-size: 4rem;">❓</span>
+      </div>
+      <h1>💬 Just One Answer</h1>
+      <p>Get instant Yes or No answers to your life's questions. Simple, smart, and surprisingly accurate.</p>
+      <div class="accuracy-badge">
+        ✨ 75% Accuracy Rate
+      </div>
+    </div>
 
-   <h1>About This App</h1>
-    <p><strong>Just One Answer</strong> is a lightweight, fun, and intuitive decision-making tool that helps you get instant <em>Yes</em> or <em>No</em> answers to any question. Whether you're facing a tough call or just want to play around, this app offers a simple and satisfying way to decide.</p>
+    <div class="download-buttons">
+      <a href="https://github.com/YSRajputStudio/ysrajputstudio.github.io/raw/refs/heads/main/Just%20One%20Answer.apk" class="btn btn-primary" download>
+        <i class="fas fa-download"></i> Download APK
+      </a>
+      <a href="#features" class="btn btn-secondary">
+        <i class="fas fa-info-circle"></i> Learn More
+      </a>
+    </div>
+  </div>
+</header>
 
-    <p><strong>75% accuracy</strong> <em>(users say it's surprisingly right!)</em> — sometimes, instincts work best when they look like luck.</p>
+<section id="features">
+  <div class="container">
+    <h2>Why Choose Just One Answer?</h2>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Instant Decisions</h3>
+        <p>Get quick Yes or No answers to any question in seconds. No overthinking, just clarity.</p>
+      </div>
 
-    <h3>Key Features</h3>
-    <ul>
-      <li>One-tap Yes/No response engine</li>
-      <li>Chat-style conversation interface</li>
-      <li>Personalized name setup</li>
-      <li>Smooth animations & interactive buttons</li>
-      <li>Fully mobile-responsive modern UI</li>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+        <h3>Chat-Style Interface</h3>
+        <p>Modern conversational UI makes decision-making feel natural and engaging.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+        <h3>Personalized Experience</h3>
+        <p>Set your name and enjoy a customized interaction every time you ask.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Mobile Optimized</h3>
+        <p>Fully responsive design works perfectly on any device, anywhere.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-magic"></i></div>
+        <h3>Smooth Animations</h3>
+        <p>Beautiful transitions and interactive buttons for delightful user experience.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>100% Private</h3>
+        <p>No data collection, no tracking. Your questions stay completely private.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chat-demo-section">
+  <div class="container">
+    <h2>See It In Action</h2>
+    
+    <div class="chat-demo">
+      <div class="chat-header">
+        <i class="fas fa-comment-dots"></i> Just One Answer
+      </div>
+      <div class="chat-body">
+        <div class="message bot-message">
+          👋 Hi! I'm here to help you decide. Ask me any Yes/No question!
+        </div>
+        <div class="message user-message">
+          Should I eat pizza tonight?
+        </div>
+        <div class="message bot-message">
+          <strong style="color: #52c41a; font-size: 1.5rem;">YES! 🍕</strong>
+        </div>
+        <div class="message user-message">
+          Should I skip my workout today?
+        </div>
+        <div class="message bot-message">
+          <strong style="color: #ff4d4f; font-size: 1.5rem;">NO! 💪</strong>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; color: var(--text-light); margin-top: 30px; font-size: 1.05rem;">
+      <em>Sometimes all you need is one simple answer to move forward!</em>
+    </p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2>About This App</h2>
+    
+    <div class="about-content">
+      <p>
+        <strong>Just One Answer</strong> is a lightweight, fun, and intuitive decision-making tool that helps you get instant <em>Yes</em> or <em>No</em> answers to any question. Whether you're facing a tough decision or just want to have some fun, this app offers a simple and satisfying way to choose.
+      </p>
+      
+      <p>
+        With a <strong>75% accuracy rate</strong> <em>(users say it's surprisingly right!)</em> — sometimes, the best decisions come from trusting your instincts... or letting the universe decide.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">75%</div>
+          <div class="stat-label">Accuracy Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">v1.0</div>
+          <div class="stat-label">Current Version</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Free Forever</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 40px; text-align: center;">
+        <strong style="font-size: 1.1rem;">Developed by YSRajput Studio</strong><br>
+        <span style="color: var(--text-light);">Concept, Design & Development</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" style="background: #f8f9fa;">
+  <div class="container">
+    <h2>Privacy & Security</h2>
+    
+    <ul class="privacy-list">
+      <li>
+        <i class="fas fa-lock"></i>
+        <span>No personal data is stored, tracked, or collected</span>
+      </li>
+      <li>
+        <i class="fas fa-globe"></i>
+        <span>Works entirely in your browser, no internet required</span>
+      </li>
+      <li>
+        <i class="fas fa-shield-alt"></i>
+        <span>100% safe, private, and offline-friendly</span>
+      </li>
+      <li>
+        <i class="fas fa-ban"></i>
+        <span>No ads, no tracking, no hidden costs</span>
+      </li>
     </ul>
+  </div>
+</section>
 
-    <h3>Credits</h3>
-        <p>Concept & Creative Direction:<strong> YSRajput Studio</strong><br>
-    <p>Designed by:<strong>YSRajput Studio</strong></p>
-
-    <h3>Privacy Policy</h3>
-    <ul>
-      <li>No personal data is stored, tracked, or collected</li>
-      <li>Works entirely in your browser, with no internet required</li>
-      <li>100% safe, private, and offline-friendly</li>
-    </ul>
-  <center><a class="download-btn" href="https://github.com/YSRajputStudio/ysrajputstudio.github.io/raw/refs/heads/main/Just%20One%20Answer.apk" download>
-    📲 Download APK
-  </a></<center>
 <footer>
-  &copy; 2025 YSRajput Studio |  Turning Ideas into Reality
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3><i class="fas fa-palette"></i> YSRajput Studio</h3>
+        <p>Turning ideas into digital reality with creativity, technology, and heart.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#projects">All Projects</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Apps</h4>
+        <ul>
+          <li><a href="just-one-answer.html">Just One Answer</a></li>
+          <li><a href="pocket-sql.html">Pocket SQL</a></li>
+          <li><a href="#">More Coming Soon</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-envelope"></i> ysrajputstudio@zohomail.in</li>
+          <li><i class="fas fa-map-marker-alt"></i> Chhattisgarh, India</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2026 YSRajput Studio. All rights reserved. | Turning Ideas into Reality
+    </div>
+  </div>
 </footer>
+
 </body>
 </html>
