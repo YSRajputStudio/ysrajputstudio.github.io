@@ -3,226 +3,691 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YSRajput Studio</title>
+  <title>YSRajput Studio </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #6c63ff;
-      --bg: #f5f5f5;
-      --text: #333;
+      --primary-dark: #5a52d5;
+      --secondary: #ff6584;
+      --accent: #36d1dc;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text: #2d3748;
+      --text-light: #718096;
+      --shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
+      --shadow-hover: 0 15px 40px rgba(108, 99, 255, 0.2);
+      --border-radius: 16px;
+      --transition: all 0.3s ease;
     }
+
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
       color: var(--text);
-      line-height: 1.6;
-      padding-bottom: 60px; /* footer ke liye space */
+      line-height: 1.7;
+      overflow-x: hidden;
     }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+
+    /* Header with animated gradient */
     header {
-      background: var(--primary);
+      position: relative;
+      padding: 120px 0 100px;
+      background: linear-gradient(-45deg, #6c63ff, #5a52d5, #36d1dc, #ff6584);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
       color: white;
-      padding: 80px 20px 60px;
       text-align: center;
+      overflow: hidden;
     }
-    header h1 {
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
       font-size: 3rem;
-      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.9);
     }
+.logo img {
+  width: 105px;      /* size adjust kar sakte ho */
+  height: 105px;
+  object-fit: contain;
+}
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
     header p {
       font-size: 1.3rem;
-      margin: 0;
+      max-width: 700px;
+      margin: 0 auto 30px;
       font-weight: 300;
+      opacity: 0.9;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
+    .cta-button {
+      display: inline-block;
       background: white;
-      padding: 30px 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: var(--primary);
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
     }
 
-    h2 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    section h2 {
       text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--text);
+      position: relative;
     }
 
-    p {
-      font-size: 1.1rem;
-      color: #444;
-      text-align: justify;
-      text-justify: inter-word;
-      line-height: 1.7;
-    }
-
-    .projects {
-      padding-top: 20px;
-    }
-
-    .project-block {
-      background: #f9f9f9;
-      margin: 15px auto;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      transition: background-color 0.3s ease;
-      max-width: 800px;
-    }
-    .project-block:hover {
-      background-color: #e9e7ff;
-    }
-    .project-block h3 {
-      margin-top: 0;
-      color: var(--primary);
-      font-size: 1.5rem;
-    }
-    .project-block ol {
-      margin: 10px 0 0 20px;
-      padding-left: 0;
-      color: #555;
-      font-size: 1rem;
-    }
-    .project-block ol li {
-      margin-bottom: 8px;
-    }
-
-    footer {
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
       background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 15px 20px;
-      font-size: 0.9rem;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
+      border-radius: 2px;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 50px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .section-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .section-card p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-left: 5px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+
+    .project-status {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .status-planning {
+      background: #fff4e6;
+      color: #ff9900;
+    }
+
+    .status-building {
+      background: #e6f7ff;
+      color: #1890ff;
+    }
+
+    .status-testing {
+      background: #f6ffed;
+      color: #52c41a;
+    }
+
+    .project-card ul {
+      list-style-type: none;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 12px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .project-card li:before {
+      content: '✓';
+      position: absolute;
       left: 0;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, #2d3748, #4a5568);
+      color: white;
+      padding: 60px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-logo h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-links h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #cbd5e0;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #a0aec0;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      .section-card {
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 80px 0 60px;
+      }
+      
       header h1 {
         font-size: 2.2rem;
       }
-      h2 {
-        font-size: 1.7rem;
-      }
+      
       section {
-        margin: 20px 15px;
-        padding: 20px 20px 30px;
+        padding: 60px 0;
       }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-card {
+        padding: 30px 20px;
+      }
+      
+      .project-card {
+        padding: 25px 20px;
+      }
+    }
+
+    /* Animation for cards on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1 translate="no">YSRajput Studio</h1>
-  <p>Turning Ideas into Digital Reality</p>
+  <div class="container">
+<div class="logo">
+  <img src="ysr-logo.png" alt="YSR Logo">
+</div>
+    <h1>YSRajput Studio</h1>
+    <p>Turning Ideas into Digital Reality with Heart and Technology</p>
+    <a href="#projects" class="cta-button">Explore Our Projects</a>
+  </div>
 </header>
 
 <section id="welcome">
-  <h2 translate="no">Welcome to YSRajput Studio</h2>
-  <p>
-    Every journey begins with a small thought. YSRajput Studio is also one such small beginning, in which we create new and modern digital solutions by thinking from our heart. We believe that technology is not just a tool, but a medium to convey your emotions and feelings to the world. Here we create simple apps and games that not only make your day better, but also understand your emotions.
-  </p>
-  <p>
-    In this journey, we have created every project with all our hard work, dedication, and by using AI. We want our apps to be not just a software for you, but an experience that can bring some peace and happiness to your everyday life.
-  </p>
-  <p>
-    In today's digital age, when there is competition everywhere, we want to create our own unique identity - a studio that brings new ideas to life, without any complex coding, just with creativity and heart. You can be a part of new experiences by joining this journey with us.
-  </p>
-  <p>
-    Let's find new paths together, dream new dreams, and give a new identity to our digital world. YSRajput Studio welcomes you on this journey.
-  </p>
+  <div class="container">
+    <h2>Welcome to YSRajput Studio</h2>
+    <div class="section-card fade-in">
+      <p>Every journey begins with a small thought. YSRajput Studio is also one such small beginning, in which we create new and modern digital solutions by thinking from our heart. We believe that technology is not just a tool, but a medium to convey your emotions and feelings to the world.</p>
+      <p>Here we create simple apps and games that not only make your day better, but also understand your emotions. In this journey, we have created every project with all our hard work, dedication, and by using AI. We want our apps to be not just a software for you, but an experience that can bring some peace and happiness to your everyday life.</p>
+      <p>In today's digital age, when there is competition everywhere, we want to create our own unique identity - a studio that brings new ideas to life, without any complex coding, just with creativity and heart. You can be a part of new experiences by joining this journey with us.</p>
+      <p>Let's find new paths together, dream new dreams, and give a new identity to our digital world. YSRajput Studio welcomes you on this journey.</p>
+    </div>
+  </div>
 </section>
 
 <section id="about">
-  <h2 translate="no">About Us</h2>
-  <p>
-    YSRajput Studio is a small start-up with a mission to create modern and emotional mobile apps and games without any complex coding - with AI, creativity and dedication. We believe that every idea can become a digital reality if it is thought about from the heart.
-  </p>
+  <div class="container">
+    <h2>About Us</h2>
+    <div class="section-card fade-in">
+      <p>YSRajput Studio is a small start-up with a mission to create modern and emotional mobile apps and games without any complex coding - with AI, creativity and dedication. We believe that every idea can become a digital reality if it is thought about from the heart.</p>
+      <p>Our approach combines cutting-edge technology with human-centered design to create products that resonate emotionally with users. We specialize in transforming abstract concepts into tangible digital experiences that improve everyday life.</p>
+      <div class="project-tags" style="margin-top: 30px;">
+        <span class="tag">AI-Powered Development</span>
+
+        <span class="tag">User-Centric Approach</span>
+        <span class="tag">Modern Technology</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="projects" class="projects">
-  <h2 translate="no">📂 Our Projects</h2>
+<section id="projects">
+  <div class="container">
+    <h2>Our Projects</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-heart"></i></div>
+        <h3>Celibacy App</h3>
+        <div class="project-status status-planning">Planning Stage</div>
+        <ul>
+          <li>The script has been written</li>
+          <li>Celibacy awareness and support app is being developed</li>
+          <li>Focus on mindfulness and personal growth</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Wellness</span>
+          <span class="tag">Self-Improvement</span>
+          <span class="tag">Mobile App</span>
+        </div>
+      </div>
 
-  <div class="project-block">
-    <h3 translate="no">📱 Celibacy App</h3>
-    <ol>
-      <li>is in the planning stage.</li>
-      <li>The script has been written.</li>
-      <li>Celibacy awareness and support app is being developed.</li>
-    </ol>
-  </div>
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-tachometer-alt"></i></div>
+        <h3>Game Turbo</h3>
+        <div class="project-status status-planning">Planning Stage</div>
+        <ul>
+          <li>Script written for performance boost</li>
+          <li>The game will be an optimization and tool-based app</li>
+          <li>Enhance gaming performance on mobile devices</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Gaming</span>
+          <span class="tag">Optimization</span>
+          <span class="tag">Tools</span>
+        </div>
+      </div>
 
-  <div class="project-block">
-    <h3 translate="no">🚀 Game Turbo</h3>
-    <ol>
-      <li>The idea is ready, it is in the planning phase.</li>
-      <li>Script written for performance boost.</li>
-      <li>The game will be an optimization and tool-based app.</li>
-    </ol>
-  </div>
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+        <h3>Pixel Clash</h3>
+        <div class="project-status status-building">Building</div>
+        <ul>
+          <li>Game planning is complete</li>
+          <li>Work is going on in the scripting phase</li>
+          <li>There will be a 2D pixel-based action game</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Gaming</span>
+          <span class="tag">Pixel Art</span>
+          <span class="tag">Action</span>
+        </div>
+      </div>
 
-  <div class="project-block">
-    <h3 translate="no">🎮 Plxel Claeh</h3>
-    <ol>
-      <li>Game planning is complete.</li>
-      <li>Work is going on in the scripting phase.</li>
-      <li>There will be a 2nd pixel-based action game.</li>
-    </ol>
-  </div>
-
-  <div class="project-block">
-    <h3 translate="no">🛸 Galaxy Attack - Space Shooter</h3>
-    <ol>
-      <li>Work on designing is underway.</li>
-      <li>The player, enemies, and background elements are getting ready.</li>
-      <li>A classic space shooting experience in the making.</li>
-    </ol>
-  </div>
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Galaxy Attack - Space Shooter</h3>
+        <div class="project-status status-building">Building</div>
+        <ul>
+          <li>Work on designing is underway</li>
+          <li>The player, enemies, and background elements are getting ready</li>
+          <li>A classic space shooting experience in the making</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Gaming</span>
+          <span class="tag">Space</span>
+          <span class="tag">Shooter</span>
+        </div>
+      </div>
 
   <a href="just-one-answer.html" style="text-decoration: none; color: inherit;">
-  <div class="project-block">
-    <h3 translate="no">💬 Just One Answer</h3>
-    <ol>
-      <li>It is in testing phase.</li>
-      <li>The theme design is being improved.</li>
-      <li>Chat-style yes/no answer app.</li>
-    </ol>
-  </div>
-  </a>
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-comment"></i></div>
+        <h3>Just One Answer</h3>
+        <div class="project-status status-testing">Testing Phase</div>
+        <ul>
+          <li>It is in testing phase</li>
+          <li>The theme design is being improved</li>
+          <li>Chat-style yes/no answer app</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Productivity</span>
+          <span class="tag">Decision Making</span>
+          <span class="tag">Chat UI</span>
+        </div>
+      </div>
 
-  <div class="project-block">
-    <h3 translate="no">❤️ Dil Ki Baat</h3>
-    <ol>
-      <li>The app is in building stage.</li>
-      <li>Work is underway to solve some bugs.</li>
-      <li>Emotion-based anonymous social media app.</li>
-    </ol>
-  </div>
+      <div class="project-card fade-in">
+        <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Dil Ki Baat</h3>
+        <div class="project-status status-building">Building</div>
+        <ul>
+          <li>The app is in building stage</li>
+          <li>Work is underway to solve some bugs</li>
+          <li>Emotion-based anonymous social media app</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Social</span>
+          <span class="tag">Emotional Health</span>
+          <span class="tag">Anonymous</span>
+        </div>
+      </div>
 
-  <div class="project-block">
-    <h3 translate="no">📝 Mood Diary</h3>
-    <ol>
-      <li>Simple notepad-style app.</li>
-      <li>User can write mood daily.</li>
-      <li>Basic working version is ready.</li>
-    </ol>
+  <a href="pocket-sql.html" style="text-decoration: none; color: inherit;">
+      <div class="project-card fade-in">
+  <div class="project-icon"><i class="fas fa-database"></i></div>
+  <h3>Pocket SQL</h3>
+  <div class="project-status status-testing">Ready for Launch</div>
+  <ul>
+    <li>Interactive SQL practice terminal</li>
+    <li>In-browser database management</li>
+    <li>100% offline learning tool</li>
+    <li>Powered by SQL.js engine</li>
+  </ul>
+  <div class="project-tags">
+    <span class="tag">Education</span>
+    <span class="tag">Database</span>
+    <span class="tag">Web App</span>
+    <span class="tag">SQL</span>
   </div>
+</div>
 
+
+    </div>
+  </div>
 </section>
 
 <footer>
-  &copy; 2025 YSRajput Studio |  Turning Ideas into Reality
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3><div class="logo">
+  <img src="ysr-logo.png" alt="YSR Logo">
+</div> YSRajput Studio</h3>
+        <p>Turning ideas into digital reality with creativity, technology, and heart.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+<div class="footer-links">
+  <h4>Apps</h4>
+  <ul>
+    <li><a href="just-one-answer.html">Just One Answer</a></li>
+    <li><a href="pocket-sql.html">Pocket SQL</a></li> <!-- NEW -->
+    <li><a href="#projects">All Projects</a></li>
+  </ul>
+</div>
+
+      
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-envelope"></i> hello@ysrajput.studio</li>
+          <li><i class="fas fa-map-marker-alt"></i> Digital Studio</li>
+          <li><i class="fas fa-globe"></i> ysrajputstudio@zohomail.in</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2026 YSRajput Studio. All rights reserved. | Turning Ideas into Reality
+    </div>
+  </div>
 </footer>
+
+<script>
+  // Scroll animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = function() {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    };
+    
+    // Initial check
+    fadeInOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', fadeInOnScroll);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
