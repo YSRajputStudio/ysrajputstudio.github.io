@@ -3,689 +3,1206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YSRajput Studio </title>
-  <link rel="icon" href="ysr-logo.png" type="image/png">
+  <title>YSRajput Studio — Digital Products for Real People</title>
+  <meta name="description" content="YSRajput Studio builds modern mobile apps and digital tools for real people." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
     :root {
-      --primary: #6c63ff;
-      --primary-dark: #5a52d5;
-      --secondary: #ff6584;
-      --accent: #36d1dc;
-      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
-      --card-bg: rgba(255, 255, 255, 0.95);
-      --text: #2d3748;
-      --text-light: #718096;
-      --shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
-      --shadow-hover: 0 15px 40px rgba(108, 99, 255, 0.2);
-      --border-radius: 16px;
-      --transition: all 0.3s ease;
+      --ink: #0d0d0d;
+      --ink-2: #3a3a3a;
+      --ink-3: #6b7280;
+      --surface: #ffffff;
+      --surface-2: #f8f9fb;
+      --surface-3: #f1f3f7;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --live: #16a34a;
+      --live-soft: #f0fdf4;
+      --thinking: #d97706;
+      --thinking-soft: #fffbeb;
+      --building: #7c3aed;
+      --building-soft: #f5f3ff;
+      --testing: #0891b2;
+      --testing-soft: #ecfeff;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.10);
+      --transition: all 0.22s ease;
+      --nav-h: 68px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
     }
 
-    .container {
-      width: 100%;
+    .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
-    
 
-    /* Header with animated gradient */
-    header {
-      position: relative;
-      padding: 120px 0 100px;
-      background: linear-gradient(-45deg, #6c63ff, #5a52d5, #36d1dc, #ff6584);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      color: white;
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .nav-brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      background: var(--surface-3);
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: white !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover) !important;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 1.4rem;
+      padding: 4px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--surface);
+      padding: 100px 24px 90px;
       text-align: center;
+      position: relative;
       overflow: hidden;
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    header::before {
+    .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-      opacity: 0.3;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .logo {
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(37,99,235,0.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--ink-3);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .logo-icon {
-      font-size: 3rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-.logo img {
-  width: 105px;      /* size adjust kar sakte ho */
-  height: 105px;
-  object-fit: contain;
-}
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      font-weight: 300;
-      opacity: 0.9;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: white;
-      color: var(--primary);
-      padding: 15px 35px;
-      border-radius: 50px;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      padding: 13px 26px;
+      border-radius: var(--radius);
       font-weight: 600;
+      font-size: 0.95rem;
       text-decoration: none;
-      margin-top: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
     }
 
-    .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.35);
     }
 
-    /* Sections */
-    section {
-      padding: 80px 0;
-      position: relative;
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink-2);
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1.5px solid var(--border);
     }
 
-    section h2 {
+    .btn-secondary:hover {
+      background: var(--surface-2);
+      border-color: #d1d5db;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: var(--text);
-      position: relative;
     }
 
-    section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -1px;
     }
 
-    .section-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border-radius: var(--border-radius);
-      padding: 50px;
-      box-shadow: var(--shadow);
-      margin-bottom: 40px;
-      transition: var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--ink-3);
+      font-weight: 500;
+      margin-top: 2px;
     }
 
-    .section-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
+    /* ── SECTION COMMON ── */
+    .section {
+      padding: 88px 24px;
     }
 
-    .section-card p {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
+    .section-alt {
+      background: var(--surface-2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--ink-3);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--accent-soft) 0%, #e0e7ff 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 1px solid rgba(37,99,235,0.1);
+    }
+
+    .about-visual-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-visual-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .about-visual-text strong {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: block;
+    }
+
+    .about-visual-text span {
+      font-size: 0.8rem;
+      color: var(--ink-3);
+    }
+
+    .about-content-text {
+      font-size: 1.05rem;
+      color: var(--ink-2);
       line-height: 1.8;
+      margin-bottom: 20px;
     }
 
-    /* Projects */
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      background: var(--surface-3);
+      color: var(--ink-2);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
     }
 
     .project-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      box-shadow: var(--shadow);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
       transition: var(--transition);
-      border-left: 5px solid var(--primary);
       position: relative;
       overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
+      border-color: #d1d5db;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
     }
 
-    .project-icon {
-      font-size: 2.5rem;
+    .project-card-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .card-accent-live { background: var(--live); }
+    .card-accent-building { background: var(--building); }
+    .card-accent-testing { background: var(--testing); }
+    .card-accent-thinking { background: var(--thinking); }
+
+    .project-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
       margin-bottom: 20px;
-      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .icon-live { background: var(--live-soft); color: var(--live); }
+    .icon-building { background: var(--building-soft); color: var(--building); }
+    .icon-testing { background: var(--testing-soft); color: var(--testing); }
+    .icon-thinking { background: var(--thinking-soft); color: var(--thinking); }
+
+    .project-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-live { background: var(--live-soft); color: var(--live); border: 1px solid rgba(22,163,74,0.2); }
+    .badge-building { background: var(--building-soft); color: var(--building); border: 1px solid rgba(124,58,237,0.2); }
+    .badge-testing { background: var(--testing-soft); color: var(--testing); border: 1px solid rgba(8,145,178,0.2); }
+    .badge-thinking { background: var(--thinking-soft); color: var(--thinking); border: 1px solid rgba(217,119,6,0.2); }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .badge-live .badge-dot {
+      animation: pulse 1.8s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .project-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: var(--text);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
     }
 
-    .project-status {
-      display: inline-block;
-      padding: 5px 15px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
+    .project-card p {
+      font-size: 0.92rem;
+      color: var(--ink-3);
+      line-height: 1.7;
       margin-bottom: 20px;
-    }
-
-    .status-planning {
-      background: #fff4e6;
-      color: #ff9900;
-    }
-
-    .status-building {
-      background: #e6f7ff;
-      color: #1890ff;
-    }
-
-    .status-testing {
-      background: #f6ffed;
-      color: #52c41a;
-    }
-
-    .project-card ul {
-      list-style-type: none;
-      margin-bottom: 20px;
-    }
-
-    .project-card li {
-      margin-bottom: 12px;
-      padding-left: 25px;
-      position: relative;
-      color: var(--text-light);
-    }
-
-    .project-card li:before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
+      flex-grow: 1;
     }
 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .ptag {
+      font-size: 0.77rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--surface-3);
+      color: var(--ink-2);
+    }
+
+    .project-link-row {
       margin-top: 20px;
-    }
-
-    .tag {
-      background: rgba(108, 99, 255, 0.1);
-      color: var(--primary);
-      padding: 5px 12px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(to right, #2d3748, #4a5568);
-      color: white;
-      padding: 60px 0 30px;
-      margin-top: 60px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .footer-logo {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .footer-logo h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
     }
 
-    .footer-links {
-      flex: 1;
-      min-width: 200px;
+    /* Featured card */
+    .project-card-featured {
+      border-color: rgba(37,99,235,0.2);
+      background: linear-gradient(145deg, #fafbff 0%, #f0f4ff 100%);
     }
 
-    .footer-links h4 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      position: relative;
+    /* ── MISSION ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
     }
 
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      color: #cbd5e0;
-      text-decoration: none;
+    .mission-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
       transition: var(--transition);
     }
 
-    .footer-links a:hover {
-      color: white;
-      padding-left: 5px;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .social-icons a:hover {
-      background: var(--primary);
+    .mission-card:hover {
+      box-shadow: var(--shadow-md);
       transform: translateY(-3px);
     }
 
-    .copyright {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.9rem;
-      color: #a0aec0;
+    .mission-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
 
-    /* Responsive */
-    @media (max-width: 992px) {
-      header h1 {
-        font-size: 2.8rem;
-      }
-      
-      .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
-      
-      .section-card {
-        padding: 40px 30px;
-      }
+    .mission-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .mission-card p {
+      font-size: 0.9rem;
+      color: var(--ink-3);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: 72px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .contact-left h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .contact-left p {
+      font-size: 1rem;
+      color: #9ca3af;
+      max-width: 440px;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      min-width: 280px;
+    }
+
+    .contact-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(37,99,235,0.3);
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-text small {
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-card-text span {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0d0d;
+      color: #9ca3af;
+      padding: 64px 24px 36px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      border-radius: 9px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(255,255,255,0.07);
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-socials a:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .footer-col h5 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: var(--transition);
+    }
+
+    .footer-col a:hover { color: white; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .footer-made {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-made i { color: #ef4444; font-size: 0.8rem; }
+
+    /* ── MOBILE NAV DRAWER ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 999;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background: white;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      transform: translateX(100%);
+      transition: transform 0.28s ease;
+    }
+
+    .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-links a {
+      text-decoration: none;
+      color: var(--ink-2);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .mobile-links a:hover { background: var(--surface-3); }
+
+    .mobile-links .mobile-cta {
+      background: var(--accent);
+      color: white !important;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .mission-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 80px 0 60px;
-      }
-      
-      header h1 {
-        font-size: 2.2rem;
-      }
-      
-      section {
-        padding: 60px 0;
-      }
-      
-      section h2 {
-        font-size: 2rem;
-      }
-      
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-      }
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .hero { padding: 72px 24px 64px; }
+      .section { padding: 64px 24px; }
+      .hero-stats { gap: 32px; padding-top: 36px; margin-top: 52px; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .contact-wrap { padding: 44px 32px; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      .section-card {
-        padding: 30px 20px;
-      }
-      
-      .project-card {
-        padding: 25px 20px;
-      }
-    }
-
-    /* Animation for cards on scroll */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      .hero h1 { letter-spacing: -0.8px; }
+      .contact-wrap { padding: 36px 24px; }
+      .contact-cards { min-width: 0; width: 100%; }
+      .contact-card { min-width: 0; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-<div class="logo">
-  <img src="ysr-logo.png" alt="YSR Logo">
-</div>
-    <h1>YSRajput Studio</h1>
-    <p>Turning Ideas into Digital Reality with Heart and Technology</p>
-    <a href="#projects" class="cta-button">Explore Our Projects</a>
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="ysr-logo.png" alt="YSRajput Studio Logo" onerror="this.style.display='none'">
+      <span class="nav-brand-name">YSRajput Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Products</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" onclick="openMenu()" aria-label="Open menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
-</header>
+</nav>
 
-<section id="welcome">
-  <div class="container">
-    <h2>Welcome to YSRajput Studio</h2>
-    <div class="section-card fade-in">
-      <p>Every journey begins with a small thought. YSRajput Studio is also one such small beginning, in which we create new and modern digital solutions by thinking from our heart. We believe that technology is not just a tool, but a medium to convey your emotions and feelings to the world.</p>
-      <p>Here we create simple apps and games that not only make your day better, but also understand your emotions. In this journey, we have created every project with all our hard work, dedication, and by using AI. We want our apps to be not just a software for you, but an experience that can bring some peace and happiness to your everyday life.</p>
-      <p>In today's digital age, when there is competition everywhere, we want to create our own unique identity - a studio that brings new ideas to life, without any complex coding, just with creativity and heart. You can be a part of new experiences by joining this journey with us.</p>
-      <p>Let's find new paths together, dream new dreams, and give a new identity to our digital world. YSRajput Studio welcomes you on this journey.</p>
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu" onclick="closeMenuOnBg(event)">
+  <div class="mobile-menu-panel">
+    <div class="mobile-menu-header">
+      <span style="font-weight:700;font-size:1rem;">Menu</span>
+      <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="mobile-links">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#projects" onclick="closeMenu()">Products</a>
+      <a href="#mission" onclick="closeMenu()">Mission</a>
+      <a href="#contact" onclick="closeMenu()" class="mobile-cta">Contact Us</a>
     </div>
   </div>
-</section>
+</div>
 
-<section id="about">
+<!-- ── HERO ── -->
+<section class="hero">
   <div class="container">
-    <h2>About Us</h2>
-    <div class="section-card fade-in">
-      <p>YSRajput Studio is a small start-up with a mission to create modern and emotional mobile apps and games without any complex coding - with AI, creativity and dedication. We believe that every idea can become a digital reality if it is thought about from the heart.</p>
-      <p>Our approach combines cutting-edge technology with human-centered design to create products that resonate emotionally with users. We specialize in transforming abstract concepts into tangible digital experiences that improve everyday life.</p>
-      <div class="project-tags" style="margin-top: 30px;">
-        <span class="tag">AI-Powered Development</span>
-
-        <span class="tag">User-Centric Approach</span>
-        <span class="tag">Modern Technology</span>
+    <div class="hero-eyebrow">
+      <i class="fas fa-cube"></i>
+      Apps · Games · Platforms
+    </div>
+    <h1>Digital products that <span>work for real people</span></h1>
+    <p class="hero-sub">YSRajput Studio builds modern apps and platforms — simple, thoughtful, and designed to improve everyday life.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> Our Products</a>
+      <a href="#about" class="btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Live Products</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">In Development</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">In Planning</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2025</div>
+        <div class="stat-label">Founded</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<!-- ── ABOUT ── -->
+<section class="section section-alt" id="about">
   <div class="container">
-    <h2>Our Projects</h2>
+    <div class="section-label">Who We Are</div>
+    <div class="section-title">A one-person studio with a big idea</div>
+    <p class="section-desc">Technology should feel human. That's the core belief behind everything we build at YSRajput Studio.</p>
+    <div class="about-grid fade-in">
+      <div class="about-content">
+        <p class="about-content-text">YSRajput Studio is an independent digital studio focused on building apps and platforms that solve real everyday problems — for people everywhere.</p>
+        <p class="about-content-text">We combine modern technology, AI-assisted development, and human-centered design to create products people actually want to use. Every project starts with a genuine problem, not a trend.</p>
+        <p class="about-content-text">No large team, no VC funding — just focused, intentional work. Our small size is our strength: it means faster decisions, tighter quality, and products built with real care.</p>
+        <div class="about-tags">
+          <span class="tag">AI-Assisted Development</span>
+          <span class="tag">Mobile-First</span>
+          <span class="tag">Human-Centered Design</span>
+          <span class="tag">Single-File Architecture</span>
+          <span class="tag">AI-Assisted Development</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-item">
+          <div class="about-visual-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div class="about-visual-text">
+            <strong>Mobile-Native Thinking</strong>
+            <span>Designed for how people actually use their phones</span>
+          </div>
+        </div>
+        <div class="about-visual-item">
+          <div class="about-visual-icon"><i class="fas fa-bolt"></i></div>
+          <div class="about-visual-text">
+            <strong>Fast Iteration</strong>
+            <span>Ship, learn, improve — no bureaucracy</span>
+          </div>
+        </div>
+        <div class="about-visual-item">
+          <div class="about-visual-icon"><i class="fas fa-heart"></i></div>
+          <div class="about-visual-text">
+            <strong>Human-Centered Design</strong>
+            <span>Empathy drives every product decision</span>
+          </div>
+        </div>
+        <div class="about-visual-item">
+          <div class="about-visual-icon"><i class="fas fa-globe"></i></div>
+          <div class="about-visual-text">
+            <strong>Global Thinking</strong>
+            <span>Products designed to work for people everywhere</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-label">Our Products</div>
+    <div class="section-title">What we're building</div>
+    <p class="section-desc">From live products to early ideas — here's everything in the pipeline at YSRajput Studio.</p>
+
     <div class="projects-grid">
-      
-      <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-heart"></i></div>
-        <h3>Celibacy App</h3>
-        <div class="project-status status-planning">Planning Stage</div>
-        <ul>
-          <li>The script has been written</li>
-          <li>Celibacy awareness and support app is being developed</li>
-          <li>Focus on mindfulness and personal growth</li>
-        </ul>
+
+      <!-- WorkSetGo — LIVE -->
+      <div class="project-card project-card-featured fade-in">
+        <div class="project-card-accent card-accent-live"></div>
+        <div class="project-icon-wrap icon-live"><i class="fas fa-briefcase"></i></div>
+        <div class="project-status-badge badge-live"><span class="badge-dot"></span> Live</div>
+        <h3>WorkSetGo</h3>
+        <p>A hyperlocal job marketplace connecting workers and employers across India. Seekers find work nearby; Givers post jobs in seconds. Real-time chat, location-based feed, and a clean mobile-first experience.</p>
         <div class="project-tags">
-          <span class="tag">Wellness</span>
-          <span class="tag">Self-Improvement</span>
-          <span class="tag">Mobile App</span>
+          <span class="ptag">Marketplace</span>
+          <span class="ptag">Hyperlocal</span>
+          
+          <span class="ptag">Mobile</span>
+        </div>
+        <div class="project-link-row">
+          <i class="fas fa-external-link-alt"></i> Available now
         </div>
       </div>
 
+      <!-- FlivoGo — Thinking -->
       <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-tachometer-alt"></i></div>
-        <h3>Game Turbo</h3>
-        <div class="project-status status-planning">Planning Stage</div>
-        <ul>
-          <li>Script written for performance boost</li>
-          <li>The game will be an optimization and tool-based app</li>
-          <li>Enhance gaming performance on mobile devices</li>
-        </ul>
+        <div class="project-card-accent card-accent-thinking"></div>
+        <div class="project-icon-wrap icon-thinking"><i class="fas fa-film"></i></div>
+        <div class="project-status-badge badge-thinking"><span class="badge-dot"></span> In Planning</div>
+        <h3>FlivoGo</h3>
+        <p>A short-video platform for creators and viewers who want real, authentic content. Scroll, discover, and share short videos — fast feed, smooth playback, and a creator experience built for everyone.</p>
         <div class="project-tags">
-          <span class="tag">Gaming</span>
-          <span class="tag">Optimization</span>
-          <span class="tag">Tools</span>
+          <span class="ptag">Short Video</span>
+          <span class="ptag">Creator Platform</span>
+          <span class="ptag">Entertainment</span>
+          <span class="ptag">Social</span>
+        </div>
+        <div class="project-link-row">
+          <i class="fas fa-lightbulb"></i> Concept stage
         </div>
       </div>
 
+      <!-- Pixel Clash -->
       <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+        <div class="project-card-accent card-accent-building"></div>
+        <div class="project-icon-wrap icon-building"><i class="fas fa-gamepad"></i></div>
+        <div class="project-status-badge badge-building"><span class="badge-dot"></span> Building</div>
         <h3>Pixel Clash</h3>
-        <div class="project-status status-building">Building</div>
-        <ul>
-          <li>Game planning is complete</li>
-          <li>Work is going on in the scripting phase</li>
-          <li>There will be a 2D pixel-based action game</li>
-        </ul>
+        <p>A 2D pixel-art action game in active development. Game planning is complete and the scripting phase is underway — fast-paced combat designed for mobile.</p>
         <div class="project-tags">
-          <span class="tag">Gaming</span>
-          <span class="tag">Pixel Art</span>
-          <span class="tag">Action</span>
+          <span class="ptag">Gaming</span>
+          <span class="ptag">Pixel Art</span>
+          <span class="ptag">Action</span>
         </div>
       </div>
 
+      <!-- Galaxy Attack -->
       <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-rocket"></i></div>
-        <h3>Galaxy Attack - Space Shooter</h3>
-        <div class="project-status status-building">Building</div>
-        <ul>
-          <li>Work on designing is underway</li>
-          <li>The player, enemies, and background elements are getting ready</li>
-          <li>A classic space shooting experience in the making</li>
-        </ul>
+        <div class="project-card-accent card-accent-building"></div>
+        <div class="project-icon-wrap icon-building"><i class="fas fa-rocket"></i></div>
+        <div class="project-status-badge badge-building"><span class="badge-dot"></span> Building</div>
+        <h3>Galaxy Attack</h3>
+        <p>A classic space shooter being built from the ground up. Player, enemies, and background elements are actively being designed for a polished mobile arcade experience.</p>
         <div class="project-tags">
-          <span class="tag">Gaming</span>
-          <span class="tag">Space</span>
-          <span class="tag">Shooter</span>
+          <span class="ptag">Gaming</span>
+          <span class="ptag">Space</span>
+          <span class="ptag">Shooter</span>
         </div>
       </div>
 
-  <a href="just-one-answer.html" style="text-decoration: none; color: inherit;">
-      <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-comment"></i></div>
+      <!-- Just One Answer -->
+      <a href="just-one-answer.html" class="project-card project-card-featured fade-in" style="cursor:pointer;">
+        <div class="project-card-accent card-accent-live"></div>
+        <div class="project-icon-wrap icon-live"><i class="fas fa-comment-dots"></i></div>
+        <div class="project-status-badge badge-live"><span class="badge-dot"></span> Live</div>
         <h3>Just One Answer</h3>
-        <div class="project-status status-testing">Testing Phase</div>
-        <ul>
-          <li>It is in testing phase</li>
-          <li>The theme design is being improved</li>
-          <li>Chat-style yes/no answer app</li>
-        </ul>
+        <p>A chat-style decision tool that gives you a clear Yes or No. Minimal, fast, and surprisingly calming when you need a quick answer without overthinking.</p>
         <div class="project-tags">
-          <span class="tag">Productivity</span>
-          <span class="tag">Decision Making</span>
-          <span class="tag">Chat UI</span>
+          <span class="ptag">Productivity</span>
+          <span class="ptag">Decision Tool</span>
+          <span class="ptag">Chat UI</span>
         </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
-        <h3>Dil Ki Baat</h3>
-        <div class="project-status status-building">Building</div>
-        <ul>
-          <li>The app is in building stage</li>
-          <li>Work is underway to solve some bugs</li>
-          <li>Emotion-based anonymous social media app</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">Social</span>
-          <span class="tag">Emotional Health</span>
-          <span class="tag">Anonymous</span>
+        <div class="project-link-row">
+          <i class="fas fa-arrow-right"></i> Open app
         </div>
-      </div>
-
-  <a href="pocket-sql.html" style="text-decoration: none; color: inherit;">
-      <div class="project-card fade-in">
-  <div class="project-icon"><i class="fas fa-database"></i></div>
-  <h3>Pocket SQL</h3>
-  <div class="project-status status-testing">Ready for Launch</div>
-  <ul>
-    <li>Interactive SQL practice terminal</li>
-    <li>In-browser database management</li>
-    <li>100% offline learning tool</li>
-    <li>Powered by SQL.js engine</li>
-  </ul>
-  <div class="project-tags">
-    <span class="tag">Education</span>
-    <span class="tag">Database</span>
-    <span class="tag">Web App</span>
-    <span class="tag">SQL</span>
-  </div>
-</div>
-
+      </a>
 
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ── MISSION ── -->
+<section class="section section-alt" id="mission">
   <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <h3><div class="logo">
-  <img src="ysr-logo.png" alt="YSR Logo">
-</div> YSRajput Studio</h3>
-        <p>Turning ideas into digital reality with creativity, technology, and heart.</p>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+    <div class="section-label">Our Approach</div>
+    <div class="section-title">How we think about building</div>
+    <p class="section-desc">Three principles that guide every product decision at YSRajput Studio.</p>
+    <div class="mission-grid">
+      <div class="mission-card fade-in">
+        <div class="mission-icon"><i class="fas fa-crosshairs"></i></div>
+        <h4>Problem-first, always</h4>
+        <p>Every product starts with a real friction point that real people face. We don't build features for the sake of it — only what genuinely helps.</p>
+      </div>
+      <div class="mission-card fade-in">
+        <div class="mission-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h4>Mobile as the primary canvas</h4>
+        <p>Our users live on their phones. Every UI, every interaction, every flow is designed mobile-first — not adapted from a desktop version as an afterthought.</p>
+      </div>
+      <div class="mission-card fade-in">
+        <div class="mission-icon"><i class="fas fa-leaf"></i></div>
+        <h4>Sustainable indie development</h4>
+        <p>We build things that last, not things that burn out. Small team, clear focus, and a long-term view on every product we put into the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-wrap fade-in">
+      <div class="contact-left">
+        <h2>Let's build something meaningful</h2>
+        <p>Have a question, idea, or just want to say hello? We'd love to hear from you. Whether it's feedback on a product or a collaboration idea — reach out.</p>
+      </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-card-text">
+            <small>Primary Email</small>
+            <span>hello@ysrajput.studio</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-globe"></i></div>
+          <div class="contact-card-text">
+            <small>Alternate Contact</small>
+            <span>ysrajputstudio@zohomail.in</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-card-text">
+            <small>Location</small>
+            <span>Remote-first Studio</span>
+          </div>
         </div>
       </div>
-      
-<div class="footer-links">
-  <h4>Apps</h4>
-  <ul>
-    <li><a href="just-one-answer.html">Just One Answer</a></li>
-    <li><a href="pocket-sql.html">Pocket SQL</a></li> <!-- NEW -->
-    <li><a href="#projects">All Projects</a></li>
-  </ul>
-</div>
+    </div>
+  </div>
+</section>
 
-      
-      <div class="footer-links">
-        <h4>Contact</h4>
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="ysr-logo.png" alt="YSRajput Studio" onerror="this.style.display='none'">
+        <div class="footer-brand-name">YSRajput Studio</div>
+        <p>Turning ideas into digital reality — with creativity, care, and a lot of late nights.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
         <ul>
-          <li><i class="fas fa-envelope"></i> hello@ysrajput.studio</li>
-          <li><i class="fas fa-map-marker-alt"></i> Digital Studio</li>
-          <li><i class="fas fa-globe"></i> ysrajputstudio@zohomail.in</li>
+          <li><a href="#">WorkSetGo <span style="font-size:0.7rem;background:#dcfce7;color:#16a34a;padding:2px 6px;border-radius:4px;margin-left:4px;">Live</span></a></li>
+          <li><a href="#">FlivoGo <span style="font-size:0.7rem;background:#fef3c7;color:#d97706;padding:2px 6px;border-radius:4px;margin-left:4px;">Planned</span></a></li>
+          <li><a href="just-one-answer.html">Just One Answer <span style="font-size:0.7rem;background:#dcfce7;color:#16a34a;padding:2px 6px;border-radius:4px;margin-left:4px;">Live</span></a></li>
+          <li><a href="#projects">All Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
-    
-    <div class="copyright">
-      &copy; 2026 YSRajput Studio. All rights reserved. | Turning Ideas into Reality
+    <div class="footer-bottom">
+      <span>&copy; 2025–2026 YSRajput Studio. All rights reserved.</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Scroll animation
-  document.addEventListener('DOMContentLoaded', function() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const fadeInOnScroll = function() {
-      fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('visible');
-        }
-      });
-    };
-    
-    // Initial check
-    fadeInOnScroll();
-    
-    // Check on scroll
-    window.addEventListener('scroll', fadeInOnScroll);
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if(targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
+  // Mobile menu
+  function openMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeMenuOnBg(e) {
+    if (e.target === document.getElementById('mobileMenu')) closeMenu();
+  }
+
+  // Scroll fade-in
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => io.observe(el));
+
+  // Stagger grid children
+  document.querySelectorAll('.projects-grid, .mission-grid').forEach(grid => {
+    Array.from(grid.children).forEach((child, i) => {
+      child.style.transitionDelay = (i * 80) + 'ms';
     });
   });
 </script>
